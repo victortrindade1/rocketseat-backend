@@ -1,0 +1,8 @@
+const { resolve } = require('path'); // para ser compatível com todos os SOs.
+
+module.exports = {
+  config: resolve(__dirname, 'src', 'config', 'database.js'), // /src/config/database.js
+  'models-path': resolve(__dirname, 'src', 'app', 'models'), // /src/app/models/
+  'migrations-path': resolve(__dirname, 'src', 'database', 'migrations'), // /src/database/migrations/
+  'seeders-path': resolve(__dirname, 'src', 'database', 'seeds'), // /src/database/seeds/
+};
