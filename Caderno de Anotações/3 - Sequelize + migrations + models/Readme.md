@@ -56,6 +56,8 @@ O sequelize cli permite executar o sequelize por linha de comando no terminal.
 `yarn sequelize <comand>`
 
 Commands:
+
+```
 sequelize db:migrate ----- Run pending migrations
 sequelize db:migrate:schema:timestamps:add ----- Update migration table to have timestamps
 sequelize db:migrate:status ----- List the status of all migrations
@@ -75,6 +77,7 @@ sequelize init:seeders ----- Initializes seeders
 sequelize migration:generate ----- Generates a new migration file [Sinônimo: migration:create]
 sequelize model:generate ----- Generates a model and its migration [Sinônimo: model:create]
 sequelize seed:generate ----- Generates a new seed file [Sinônimo: seed:create]
+```
 
 Options:
 --version ----- Show version number [boolean]
