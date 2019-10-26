@@ -1,5 +1,6 @@
 import express from 'express';
 import routes from './routes';
+import './database';
 
 // O professor disse não gostar de usar "class" no frontend, mas no backend é
 // muito bom de usar, usa bastante.
@@ -20,5 +21,5 @@ class App {
   }
 }
 
-// Exporto apenas o server da classe, e não a classe toda
+// Exporto apenas o server da classe, e não a classe toda, pois traz segurança
 export default new App().server;

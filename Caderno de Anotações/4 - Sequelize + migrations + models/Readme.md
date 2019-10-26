@@ -80,8 +80,11 @@ sequelize seed:generate ----- Generates a new seed file [Sinônimo: seed:create]
 ```
 
 Options:
+
+```
 --version ----- Show version number [boolean]
 --help ----- Show help [boolean]
+```
 
 ## Migrations
 
@@ -99,7 +102,7 @@ Crie a pasta /src/database/migrations/
 
 ### /src/database/index.js (o loader dos models)
 
-Todo model criado, vc tem q vir aqui atualizar o vetor.
+Todo model criado, vc tem q vir aqui atualizar o array models.
 
 ```
 import Sequelize from 'sequelize';
@@ -194,15 +197,18 @@ Após finalizar a criação de uma migration, temos q migrar para q execute o SQ
 
 Lib q popula dados fictícios pra vc testar.
 
-## Arquitetura MVC
+## Arquitetura MVC (Model, View, Controller)
 
-M - model - são as tabelas. Cada model é uma tabela;
-V - View - view é o q o usuário vê. No caso do backend, é o arquivo JSON q retorna.
-C - Controller - São as regras de negócio (inserir, editar...)
+- Models -> são as tabelas. Cada model é uma tabela;
+- Views -> view é o q o usuário vê. No caso do backend, é o arquivo JSON q retorna.
+- Controllers -> São as regras de negócio (inserir, editar...)
 
 Crie as pastas:
+
+```
 /src/app/controllers/
 /src/app/models/
+```
 
 ## Controllers
 
@@ -274,7 +280,7 @@ module.exports = {
 };
 ```
 
-### Postgres no Sequelize
+### Postgres c/ Sequelize
 
 `yarn add pg pg-hstore`
 

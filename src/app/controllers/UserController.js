@@ -1,0 +1,23 @@
+import User from '../models/User';
+
+class UserController {
+  async store(req, res) {
+    const userExists = await User.findOne({ where: { email: req.body.email } });
+
+    if (userExists) {
+      return res.status(400).json({ error: 'User already exists.' });
+    }
+
+    // Em vez de carregar na response todos os dados de User, eu escolho carregar estes 4
+    const { id, name, email, provider } = await User.create(req.body);
+
+    return res.json({
+      id,
+      name,
+      email,
+      provider,
+    });
+  }
+}
+
+export default new UserController();
