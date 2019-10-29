@@ -1,3 +1,12 @@
+<!-- TOC -->
+
+- [A partir do projeto vazio...](#a-partir-do-projeto-vazio)
+  - [/src/app.js](#srcappjs)
+  - [/src/server.js](#srcserverjs)
+  - [/src/routes.js](#srcroutesjs)
+
+<!-- /TOC -->
+
 # A partir do projeto vazio...
 
 Crie a pasta /src/ e os arquivos:

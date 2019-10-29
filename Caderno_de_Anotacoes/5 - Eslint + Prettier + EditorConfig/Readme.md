@@ -1,3 +1,16 @@
+<!-- TOC -->
+
+- [Eslint, Prettier e EditorConfig](#eslint-prettier-e-editorconfig)
+  - [Eslint](#eslint)
+    - [.eslintrc.js](#eslintrcjs)
+    - [settings.json](#settingsjson)
+  - [Prettier](#prettier)
+    - [.prettierrc](#prettierrc)
+  - [EditorConfig](#editorconfig)
+    - [.editorconfig](#editorconfig)
+
+<!-- /TOC -->
+
 ## Eslint, Prettier e EditorConfig
 
 ### Eslint

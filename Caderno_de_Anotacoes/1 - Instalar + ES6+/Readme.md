@@ -1,3 +1,14 @@
+<!-- TOC -->
+
+- [Get started](#get-started)
+- [Usando sintaxe ES6+ - SUCRASE](#usando-sintaxe-es6---sucrase)
+  - [/nodemon.json](#nodemonjson)
+  - [Consertando o debug do vscode](#consertando-o-debug-do-vscode)
+    - [package.json](#packagejson)
+    - [Configuração do debug](#configuração-do-debug)
+
+<!-- /TOC -->
+
 ## Get started
 
 `yarn init -y`

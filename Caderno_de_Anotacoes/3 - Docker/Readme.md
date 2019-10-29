@@ -1,3 +1,15 @@
+<!-- TOC -->
+
+- [Docker](#docker)
+  - [PostgreSQL do Docker](#postgresql-do-docker)
+  - [Conectando / desconectando o docker](#conectando--desconectando-o-docker)
+  - [Listar containers](#listar-containers)
+  - [Visualizar log do container](#visualizar-log-do-container)
+    - [Usando interface gráfica do postgres - Postbird](#usando-interface-gráfica-do-postgres---postbird)
+  - [Criar banco de dados](#criar-banco-de-dados)
+
+<!-- /TOC -->
+
 ## Docker
 
 O docker usa containers separados paraa cada serviço. É como uma virtual

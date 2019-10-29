@@ -1,3 +1,24 @@
+<!-- TOC -->
+
+- [Sequelize](#sequelize)
+  - [sequelize-cli](#sequelize-cli)
+    - [Usage](#usage)
+  - [Migrations](#migrations)
+    - [/src/database/index.js (o loader dos models)](#srcdatabaseindexjs-o-loader-dos-models)
+    - [Create Table](#create-table)
+    - [Migrate](#migrate)
+  - [Seeds - Lib pra popular base com dados fictícios](#seeds---lib-pra-popular-base-com-dados-fictícios)
+  - [Arquitetura MVC (Model, View, Controller)](#arquitetura-mvc-model-view-controller)
+  - [Controllers](#controllers)
+  - [Models](#models)
+    - [/src/app/models/User.js](#srcappmodelsuserjs)
+  - [Configurando o Sequelize](#configurando-o-sequelize)
+    - [.sequelizerc](#sequelizerc)
+    - [Postgres c/ Sequelize](#postgres-c-sequelize)
+    - [/src/config/database.js](#srcconfigdatabasejs)
+
+<!-- /TOC -->
+
 # Sequelize
 
 O Sequelize é um ORM. ORMs são manipuladores de bancos de dados. Eles tetificam
