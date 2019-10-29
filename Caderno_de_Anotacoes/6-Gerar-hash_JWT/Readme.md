@@ -61,6 +61,10 @@ class User extends Model {
 
     return this;
   }
+
+  checkPassword(password) {
+    return bcrypt.compare(password, this.password_hash);
+  }
 }
 
 export default User;
@@ -68,8 +72,17 @@ export default User;
 
 # JWT (JSON Web Token)
 
+`yarn add jsonwebtoken`
+
 O JWT é uma forma de fazer autenticação para serviços RESTful. Vc manipula o
 token em formato JSON.
+
+Com o JWT, o usuário logado possui uma chave de acesso, um token mesmo. O token
+nos prova que realmente é um usuário desse sistema.
+
+O token não pode conter a senha do usuário, pois é fácil desvendar informações
+num token. Não é para isso q ele serve, não é para criptografar. É para provar q
+ele veio daqui de dentro, com uma chave única vinculada a este sistema.
 
 O JWT é dividido em 3 partes separadas por um ponto `.`:
 
@@ -84,3 +97,47 @@ O JWT é dividido em 3 partes separadas por um ponto `.`:
 - Assinatura
   - Por mais que tentem alterar informações do payload, existe a assinatura, que
     garante que minhas informações não serão violadas.
+
+Neste projeto, o JWT foi usado nas Sessions, q são seções do usuário logado.
+As informações do usuário vêm acompanhadas do token:
+
+## src/app/controllers/SessionController.js
+
+```
+import jwt from 'jsonwebtoken';
+import authConfig from '../../config/auth';
+import User from '../models/User';
+
+class SessionController {
+  // Método store -> cria nova session]
+  // Repare q store não necessariamente significa gravar algo no banco
+  async store(req, res) {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      return res.status(401).json({ error: 'User not found' });
+    }
+
+    if (!(await user.checkPassword(password))) {
+      return res.status(401).json({ error: 'Password does not match' });
+    }
+
+    const { id, name } = user;
+
+    return res.json({
+      user: {
+        id,
+        name,
+        email,
+      },
+      token: jwt.sign({ id }, authConfig.secret, {
+        expiresIn: authConfig.expiresIn,
+      }),
+    });
+  }
+}
+
+export default new SessionController();
+```
