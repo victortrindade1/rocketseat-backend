@@ -1,4 +1,4 @@
-<!-- TOC -->autoauto- [Gerar Hash](#gerar-hash)auto  - [No model...](#no-model)auto- [JWT (JSON Web Token)](#jwt-json-web-token)auto  - [src/app/controllers/SessionController.js](#srcappcontrollerssessioncontrollerjs)auto    - [src/config/auth.js](#srcconfigauthjs)auto  - [Middlewares para JWT](#middlewares-para-jwt)autoauto<!-- /TOC -->
+<!-- TOC -->autoauto- [1. Gerar Hash](#1-gerar-hash)auto  - [1.1. No model...](#11-no-model)auto- [2. JWT (JSON Web Token)](#2-jwt-json-web-token)auto  - [2.1. src/app/controllers/SessionController.js](#21-srcappcontrollerssessioncontrollerjs)auto    - [2.1.1. src/config/auth.js](#211-srcconfigauthjs)auto  - [2.2. Middlewares para JWT](#22-middlewares-para-jwt)autoauto<!-- /TOC -->
 
 # 1. Gerar Hash
 
