@@ -72,4 +72,4 @@ O JWT é uma forma de fazer autenticação para serviços RESTful. Vc manipula o
 token em formato JSON.
 
 O JWT fica da seguinte forma:
-![jwt-image](./Caderno_de_Anotacoes/6-Gerar-hash_JWT/img1.png)
+![jwt-image](../../Caderno_de_Anotacoes/6-Gerar-hash_JWT/img1.png)
