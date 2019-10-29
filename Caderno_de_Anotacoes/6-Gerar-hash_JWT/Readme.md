@@ -1,3 +1,12 @@
+##### Table of Contents
+
+[Headers](#headers)
+[Emphasis](#emphasis)
+...snip...
+<a name="headers"/>
+
+## Headers
+
 # Gerar Hash
 
 A partir da senha digitada pelo usuário no form, vamos gerar um hash, e salvar
@@ -103,6 +112,8 @@ As informações do usuário vêm acompanhadas do token:
 
 ## src/app/controllers/SessionController.js
 
+Criando um novo jwt `jwt.sign` na criação de uma nova sessão:
+
 ```
 import jwt from 'jsonwebtoken';
 import authConfig from '../../config/auth';
@@ -158,3 +169,7 @@ export default {
 ```
 
 > Uma dica: tá com preguiça de escolher senha? [me acesse](https://www.md5online.org)
+
+## Middlewares para JWT
+
+Agora que
