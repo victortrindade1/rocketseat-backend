@@ -1,20 +1,13 @@
-##### Table of Contents
+<!-- TOC -->autoauto- [Gerar Hash](#gerar-hash)auto  - [No model...](#no-model)auto- [JWT (JSON Web Token)](#jwt-json-web-token)auto  - [src/app/controllers/SessionController.js](#srcappcontrollerssessioncontrollerjs)auto    - [src/config/auth.js](#srcconfigauthjs)auto  - [Middlewares para JWT](#middlewares-para-jwt)autoauto<!-- /TOC -->
 
-[Headers](#headers)
-[Emphasis](#emphasis)
-...snip...
-<a name="headers"/>
-
-## Headers
-
-# Gerar Hash
+# 1. Gerar Hash
 
 A partir da senha digitada pelo usuário no form, vamos gerar um hash, e salvar
 apenas o hash e não a senha. Para gerar hash, use o `bcryptjs`.
 
 `yarn add bcryptjs`
 
-## No model...
+## 1.1. No model...
 
 Antes:
 
@@ -79,7 +72,7 @@ class User extends Model {
 export default User;
 ```
 
-# JWT (JSON Web Token)
+# 2. JWT (JSON Web Token)
 
 `yarn add jsonwebtoken`
 
@@ -110,7 +103,7 @@ O JWT é dividido em 3 partes separadas por um ponto `.`:
 Neste projeto, o JWT foi usado nas Sessions, q são seções do usuário logado.
 As informações do usuário vêm acompanhadas do token:
 
-## src/app/controllers/SessionController.js
+## 2.1. src/app/controllers/SessionController.js
 
 Criando um novo jwt `jwt.sign` na criação de uma nova sessão:
 
@@ -155,7 +148,7 @@ export default new SessionController();
 
 Pra organizar, foi criado um arquivo para guardar informações sensíveis `auth.js`
 
-### src/config/auth.js
+### 2.1.1. src/config/auth.js
 
 É vc q escolhe a chave de segurança q prova q o token do jwt vem realmente do
 seu sistema. Essa chave foi colocada num arquivo separado para organizar. Junto,
@@ -170,6 +163,6 @@ export default {
 
 > Uma dica: tá com preguiça de escolher senha? [me acesse](https://www.md5online.org)
 
-## Middlewares para JWT
+## 2.2. Middlewares para JWT
 
 Agora que
