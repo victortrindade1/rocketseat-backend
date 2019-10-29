@@ -141,3 +141,20 @@ class SessionController {
 
 export default new SessionController();
 ```
+
+Pra organizar, foi criado um arquivo para guardar informações sensíveis `auth.js`
+
+### src/config/auth.js
+
+É vc q escolhe a chave de segurança q prova q o token do jwt vem realmente do
+seu sistema. Essa chave foi colocada num arquivo separado para organizar. Junto,
+o prazo para expirar a sessão do usuário.
+
+```
+export default {
+  secret: 'eb8f7b80ca95741e6d69c8905a64fa7e',
+  expiresIn: '7d',
+};
+```
+
+> Uma dica: tá com preguiça de escolher senha? (me acesse)[https://www.md5online.org]
