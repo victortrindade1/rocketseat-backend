@@ -83,4 +83,4 @@ O JWT é dividido em 3 partes separadas por um ponto `.`:
     > NUNCA COLOQUE A SENHA NO TOKEN OU INFORMAÇÕES SENSÍVEIS!
 - Assinatura
   - Por mais que tentem alterar informações do payload, existe a assinatura, que
-    garante que minhas informações não serão violadas.d
+    garante que minhas informações não serão violadas.
