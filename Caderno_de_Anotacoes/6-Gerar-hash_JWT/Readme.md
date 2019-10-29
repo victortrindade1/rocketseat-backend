@@ -71,5 +71,16 @@ export default User;
 O JWT é uma forma de fazer autenticação para serviços RESTful. Vc manipula o
 token em formato JSON.
 
-O JWT fica da seguinte forma:
-![jwt-image](/Caderno_de_Anotacoes/6-Gerar-hash_JWT/img1.png)
+O JWT é dividido em 3 partes separadas por um ponto `.`:
+
+![jwt-image](/Caderno_de_Anotacoes/6-Gerar-hash_JWT/images/img1.png)
+
+- Headers
+  - Mostram o tipo de token. O JWT possui muitos tipos, e aqui mostra o seu.
+  - É importante ter noção de onde é o header, pois usaremos isto no front-end.
+- Payloads
+  - São suas informações dentro do token, como id, e-mail, nome, etc.
+    > NUNCA COLOQUE A SENHA NO TOKEN OU INFORMAÇÕES SENSÍVEIS!
+- Assinatura
+  - Por mais que tentem alterar informações do payload, existe a assinatura, que
+    garante que minhas informações não serão violadas.
