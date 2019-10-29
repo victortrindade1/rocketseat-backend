@@ -35,7 +35,7 @@ Depois:
 
 ```
 import Sequelize, { Model } from 'sequelize';
-**import bcrypt from 'bcryptjs';**
+import bcrypt from 'bcryptjs';
 
 class User extends Model {
   static init(sequelize) {
@@ -65,3 +65,11 @@ class User extends Model {
 
 export default User;
 ```
+
+# JWT (JSON Web Token)
+
+O JWT é uma forma de fazer autenticação para serviços RESTful. Vc manipula o
+token em formato JSON.
+
+O JWT fica da seguinte forma:
+![jwt-image](./Caderno_de_Anotacoes/6- Gerar hash + JWT/img1.png)
