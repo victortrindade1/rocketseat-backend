@@ -80,7 +80,7 @@ O JWT é dividido em 3 partes separadas por um ponto `.`:
   - É importante ter noção de onde é o header, pois usaremos isto no front-end.
 - Payloads
   - São suas informações dentro do token, como id, e-mail, nome, etc.
-    > NUNCA COLOQUE A SENHA NO TOKEN OU INFORMAÇÕES SENSÍVEIS!
+    > **Nunca coloque senha ou outras informações sensíveis no token**
 - Assinatura
   - Por mais que tentem alterar informações do payload, existe a assinatura, que
     garante que minhas informações não serão violadas.
