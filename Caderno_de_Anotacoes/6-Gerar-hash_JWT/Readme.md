@@ -157,4 +157,4 @@ export default {
 };
 ```
 
-> Uma dica: tá com preguiça de escolher senha? (me acesse)[https://www.md5online.org]
+> Uma dica: tá com preguiça de escolher senha? [me acesse](https://www.md5online.org)
