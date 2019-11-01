@@ -60,27 +60,6 @@ Acrescente a flag --inspect no nodemon
 Na aba de debug do vscode, crie uma nova configuração (lá em cima em "No
 Configurations").
 
-Antes:
-
-```json
-{
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program",
-      "program": "${workspaceFolder}/index.js"
-    }
-  ]
-}
-```
-
-Depois:
-
 ```diff
 {
   // Use IntelliSense to learn about possible attributes.
