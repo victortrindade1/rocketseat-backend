@@ -51,7 +51,7 @@ Acrescente a flag --inspect no nodemon
 ```json
 "scripts": {
 "dev": "nodemon src/server.js",
-"dev:debug": "nodemon --inspect src/server.js"      <<<---
+"dev:debug": "nodemon --inspect src/server.js"
 },
 ```
 
@@ -81,7 +81,7 @@ Antes:
 
 Depois:
 
-```json
+```diff
 {
   // Use IntelliSense to learn about possible attributes.
   // Hover to view descriptions of existing attributes.
@@ -90,10 +90,10 @@ Depois:
   "configurations": [
     {
       "type": "node",
-      "request": "attach",          <<<---
++      "request": "attach",
       "name": "Launch Program",
       "restart": true,
-      "protocol": "inspector"       <<<---
++      "protocol": "inspector"
     }
   ]
 }
