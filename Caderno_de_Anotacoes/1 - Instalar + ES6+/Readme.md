@@ -69,9 +69,11 @@ Configurations").
   "configurations": [
     {
       "type": "node",
+-      "request": "launch",
 +      "request": "attach",
       "name": "Launch Program",
-      "restart": true,
+-      "program": "${workspaceFolder}/index.js",
++      "restart": true,
 +      "protocol": "inspector"
     }
   ]
