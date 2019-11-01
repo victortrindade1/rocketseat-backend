@@ -5,7 +5,9 @@
 - [JWT (JSON Web Token)](#jwt-json-web-token)
   - [src/app/controllers/SessionController.js](#srcappcontrollerssessioncontrollerjs)
     - [src/config/auth.js](#srcconfigauthjs)
-  - [Middlewares para JWT](#middlewares-para-jwt)
+  - [Middlewares p/ autenticação](#middlewares-p-autenticação)
+    - [src/app/middlewares/auth.js](#srcappmiddlewaresauthjs)
+  - [Testando token no Insomnia](#testando-token-no-insomnia)
 
 <!-- /TOC -->
 
@@ -172,6 +174,60 @@ export default {
 
 > Uma dica: tá com preguiça de escolher senha? [me acesse](https://www.md5online.org)
 
-## Middlewares para JWT
+## Middlewares p/ autenticação
 
-Agora que
+Vou usar o JWT para ver se o usuário está realmente logado.
+
+### src/app/middlewares/auth.js
+
+```
+import jwt from 'jsonwebtoken';
+import { promisify } from 'util';
+
+import authConfig from '../../config/auth';
+
+export default async (req, res, next) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader) {
+    return res.status(401).json({ error: 'Token not provided' });
+  }
+
+  // Aqui estou pegando o segundo elemento do array authHeader
+  const [, token] = authHeader.split(' ');
+
+  try {
+
+    const decoded = await promisify(jwt.verify)(token, authConfig.secret);
+
+    req.userId = decoded.id;
+
+    return next();
+  } catch (err) {
+    return res.status(401).json({ error: 'Token invalid' });
+  }
+};
+```
+
+Nas rotas:
+
+```
+routes.post('/users', UserController.store);
+routes.post('/sessions', SessionController.store);
+
+routes.use(authMiddleware);
+
+routes.put('/users', UserController.update);
+```
+
+## Testando token no Insomnia
+
+O token é um header. Vc pode empregar a informação do token na rota de 2 formas:
+
+- Aba Auth
+  1. Selecione _Bearer Token_
+  2. Cole o token
+     ou
+- Aba Header
+  1. New header = _Bearer_
+  2. Value = _token_
