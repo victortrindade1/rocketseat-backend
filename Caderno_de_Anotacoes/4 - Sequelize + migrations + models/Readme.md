@@ -30,7 +30,7 @@ Exemplo:
 
 - Com SQL
 
-```
+```SQL
 INSERT INTO users (name, email)
   VALUES (
     "Foobar",
@@ -40,16 +40,16 @@ INSERT INTO users (name, email)
 
 - Com Sequelize:
 
-```
+```javascript
 User.create({
-  name: "Foobar",
-  email: "foo@bar.com"
-})
+  name: 'Foobar',
+  email: 'foo@bar.com',
+});
 ```
 
 - Com SQL:
 
-```
+```SQL
 SELECT *
 FROM users
 WHERE email = "foo@bar.com"
@@ -58,12 +58,12 @@ LIMIT 1
 
 - Com Sequelize:
 
-```
+```javascript
 User.findOne({
   where: {
-    email: "foo@bar.com"
-  }
-})
+    email: 'foo@bar.com',
+  },
+});
 ```
 
 ## sequelize-cli
@@ -125,7 +125,7 @@ Crie a pasta /src/database/migrations/
 
 Todo model criado, vc tem q vir aqui atualizar o array models.
 
-```
+```javascript
 import Sequelize from 'sequelize';
 
 import User from '../app/models/User';
@@ -160,23 +160,19 @@ sei).
 
 Migration gerada:
 
-```
+```javascript
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: (queryInterface, Sequelize) => {},
 
-  },
-
-  down: (queryInterface, Sequelize) => {
-
-  }
+  down: (queryInterface, Sequelize) => {},
 };
 ```
 
 Acrescente os campos da tabela:
 
-```
+```javascript
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {
@@ -184,16 +180,16 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       email: {
         allowNull: false,
         unique: true,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       password_hash: {
         type: Sequelize.STRING,
@@ -203,7 +199,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('users')
+    return queryInterface.dropTable('users');
   },
 };
 ```
@@ -239,13 +235,13 @@ São classes. Sempre retornam um JSON. Não chama outro controller.
 
 Ex:
 
-```
+```javascript
 class UserController {
-  index() { } // Listagem de usuários
-  show() { } // Exibir um único usuário
-  store() { } // Cadastrar usuário
-  update() { } // Alterar usuário
-  delete() { } // Remover usuário
+  index() {} // Listagem de usuários
+  show() {} // Exibir um único usuário
+  store() {} // Cadastrar usuário
+  update() {} // Alterar usuário
+  delete() {} // Remover usuário
 }
 ```
 
@@ -257,7 +253,7 @@ preenchimento automático, como "id", "created_at" e "updated_at".
 
 ### /src/app/models/User.js
 
-```
+```javascript
 import Sequelize, { Model } from 'sequelize'
 
 class User extends Model {
@@ -290,7 +286,7 @@ Como os diretórios são separados de forma diferente nos SOs (ex: windows é \,
 no iOs é /), esse arquivo resolve este problema com as paths que iremos
 trabalhar no sequelize.
 
-```
+```javascript
 const { resolve } = require('path'); // para ser compatível com todos os SOs.
 
 module.exports = {
@@ -307,7 +303,7 @@ module.exports = {
 
 ### /src/config/database.js
 
-```
+```javascript
 module.exports = {
   dialect: 'postgres',
   host: 'localhost',

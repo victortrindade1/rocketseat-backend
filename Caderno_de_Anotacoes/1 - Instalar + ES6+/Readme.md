@@ -31,7 +31,7 @@ Só ficar ligado q pra rodar um arquivo, não dá mais pra usar um
 
 Este arquivo é necessário para podermos usar o sucrase.
 
-```
+```json
 {
   "execMap": {
     "js": "node -r sucrase/register"
@@ -48,7 +48,7 @@ configurações
 
 Acrescente a flag --inspect no nodemon
 
-```
+```json
 "scripts": {
 "dev": "nodemon src/server.js",
 "dev:debug": "nodemon --inspect src/server.js"      <<<---
@@ -62,7 +62,7 @@ Configurations").
 
 Antes:
 
-```
+```json
 {
   // Use IntelliSense to learn about possible attributes.
   // Hover to view descriptions of existing attributes.
@@ -81,7 +81,7 @@ Antes:
 
 Depois:
 
-```
+```json
 {
   // Use IntelliSense to learn about possible attributes.
   // Hover to view descriptions of existing attributes.

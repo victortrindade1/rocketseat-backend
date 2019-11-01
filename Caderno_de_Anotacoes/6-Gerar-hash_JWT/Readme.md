@@ -22,7 +22,7 @@ apenas o hash e não a senha. Para gerar hash, use o `bcryptjs`.
 
 Antes:
 
-```
+```javascript
 import Sequelize, { Model } from 'sequelize';
 
 class User extends Model {
@@ -46,7 +46,7 @@ export default User;
 
 Depois:
 
-```
+```javascript
 import Sequelize, { Model } from 'sequelize';
 import bcrypt from 'bcryptjs';
 
@@ -118,7 +118,7 @@ As informações do usuário vêm acompanhadas do token:
 
 Criando um novo jwt `jwt.sign` na criação de uma nova sessão:
 
-```
+```javascript
 import jwt from 'jsonwebtoken';
 import authConfig from '../../config/auth';
 import User from '../models/User';
@@ -165,7 +165,7 @@ Pra organizar, foi criado um arquivo para guardar informações sensíveis `auth
 seu sistema. Essa chave foi colocada num arquivo separado para organizar. Junto,
 o prazo para expirar a sessão do usuário.
 
-```
+```javascript
 export default {
   secret: 'eb8f7b80ca95741e6d69c8905a64fa7e',
   expiresIn: '7d',
@@ -180,7 +180,7 @@ Vou usar o JWT para ver se o usuário está realmente logado.
 
 ### src/app/middlewares/auth.js
 
-```
+```javascript
 import jwt from 'jsonwebtoken';
 import { promisify } from 'util';
 
@@ -197,7 +197,6 @@ export default async (req, res, next) => {
   const [, token] = authHeader.split(' ');
 
   try {
-
     const decoded = await promisify(jwt.verify)(token, authConfig.secret);
 
     req.userId = decoded.id;
@@ -211,7 +210,7 @@ export default async (req, res, next) => {
 
 Nas rotas:
 
-```
+```javascript
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 

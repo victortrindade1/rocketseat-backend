@@ -19,7 +19,7 @@ Crie a pasta /src/ e os arquivos:
 
 ## /src/app.js
 
-```
+```javascript
 import express from 'express';
 import routes from './routes';
 // import './database'; (só depois com sequelize)
@@ -49,7 +49,7 @@ export default new App().server;
 
 ## /src/server.js
 
-```
+```javascript
 // O server.js faço separado do App, pq qnd eu fizer testes unitários, não
 // chegarei a conectar o servidor por porta
 import app from './app';
@@ -59,7 +59,7 @@ app.listen(3333);
 
 ## /src/routes.js
 
-```
+```javascript
 import { Router } from 'express';
 
 import UserController from './app/controllers/UserController';
@@ -67,7 +67,7 @@ import UserController from './app/controllers/UserController';
 const routes = new Router();
 
 routes.get('/', (req, res) => {
-  return res.json({ message: "hello world!" })
+  return res.json({ message: 'hello world!' });
 });
 
 export default routes;

@@ -30,7 +30,7 @@ Inicie o arquivo de configuração:
 
 Aplique estas rules:
 
-```
+```javascript
   rules: {
     "class-methods-use-this": "off",
     "no-params-reassign": "off",
@@ -44,7 +44,7 @@ Aplique estas rules:
 
 Abra o settings.json do vscode e acrescente:
 
-```
+```json
 "editor.formatOnSave": true,
   "eslint.autoFixOnSave": true,
   "eslint.validate": [
@@ -75,7 +75,7 @@ O prettier é como um complemento do Eslint. Parece a mesma coisa, mas na verdad
 
 No .eslintrc.js:
 
-```
+```javascript
 module.exports = {
   ...
   extends: ["airbnb-base", "prettier"],
@@ -94,7 +94,7 @@ module.exports = {
 
 Vc pode criar o arquivo .prettierrc para fazer configurações manuais.
 
-```
+```json
 {
   "singleQuote": true,
   "trailingComma": "es5"
