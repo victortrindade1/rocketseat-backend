@@ -21,10 +21,11 @@ Instale a lib no projeto:
 `yarn add eslint -D`
 
 Inicie o arquivo de configuração:
-1- `yarn eslint --init`
-2- Responda umas perguntinhas tetas.
-3- deleta o arquivo gerado package.lock.json, pois estamos usando o yarn
-4- dê um `yarn`
+
+1. `yarn eslint --init`
+2. Responda umas perguntinhas tetas.
+3. deleta o arquivo gerado package.lock.json, pois estamos usando o yarn
+4. dê um `yarn`
 
 #### .eslintrc.js
 
@@ -105,8 +106,8 @@ Vc pode criar o arquivo .prettierrc para fazer configurações manuais.
 
 Para padronizar regras de código entre plataformas (ex: sublime text com vscode), caso não esteja programando sozinho.
 
-1- Instale a extensão no vscode.
-2- na pasta raiz, com o botão auxiliar do mouse, clique em "Generate .editorconfig"
+1. Instale a extensão no vscode.
+2. na pasta raiz, com o botão auxiliar do mouse, clique em "Generate .editorconfig"
 
 #### .editorconfig
 
@@ -125,13 +126,13 @@ insert_final_newline = false
 
 Depois:
 
-```
+```diff
 root = true
 
 [*]
 indent_style = space
 indent_size = 2
 charset = utf-8
-trim_trailing_whitespace = true     <<<---
-insert_final_newline = true         <<<---
++ trim_trailing_whitespace = true
++ insert_final_newline = true
 ```
