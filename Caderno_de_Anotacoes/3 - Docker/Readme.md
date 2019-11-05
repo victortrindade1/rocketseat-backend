@@ -62,6 +62,6 @@ O Postbird é uma ferramenta visual para manipular dados do Postgres.
 
 ### Criar banco de dados
 
-1- Esteja com o docker startado.
-2- Logue o Postbird.
-3- Em "Select database", clique em "Create Database"
+1. Esteja com o docker startado.
+2. Logue o Postbird.
+3. Em "Select database", clique em "Create Database"
