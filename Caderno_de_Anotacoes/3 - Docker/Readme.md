@@ -6,11 +6,11 @@
   - [Listar containers](#listar-containers)
   - [Visualizar log do container](#visualizar-log-do-container)
     - [Usando interface gráfica do postgres - Postbird](#usando-interface-gráfica-do-postgres---postbird)
-  - [Criar banco de dados](#criar-banco-de-dados)
+- [Criar banco de dados](#criar-banco-de-dados)
 
 <!-- /TOC -->
 
-## Docker
+# Docker
 
 O docker usa containers separados paraa cada serviço. É como uma virtual
 machine, porém melhor, pois não precisa de rodar diferentes SOs para diferentes
@@ -23,7 +23,7 @@ principal. Ainda não sei.
 É necessário instalar o docker no pc. Para instalar o docker na máquina, basta
 seguir o passo-a-passo do site.
 
-### PostgreSQL do Docker
+## PostgreSQL do Docker
 
 Instale o container do postgres na sua máquina, porém, instale pelo docker, no
 comando abaixo:
@@ -39,28 +39,28 @@ A primeira porta é a sua. A segunda a do docker. Se vc já tiver usando esta
 porta, vc deverá trocá-la.
 Ex: 5433:5432
 
-### Conectando / desconectando o docker
+## Conectando / desconectando o docker
 
 Ligar -> `docker start <meu-container>` // docker start database
 Desligar -> `docker stop <meu-container>` // docker stop database
 
-### Listar containers
+## Listar containers
 
 `docker ps`
 ou
 `docker container ls -a` (melhor)
 
-### Visualizar log do container
+## Visualizar log do container
 
 `docker logs <meu-container>`
 
-#### Usando interface gráfica do postgres - Postbird
+### Usando interface gráfica do postgres - Postbird
 
 O Postbird é uma ferramenta visual para manipular dados do Postgres.
 
 `sudo snap install postbird`
 
-### Criar banco de dados
+# Criar banco de dados
 
 1. Esteja com o docker startado.
 2. Logue o Postbird.
