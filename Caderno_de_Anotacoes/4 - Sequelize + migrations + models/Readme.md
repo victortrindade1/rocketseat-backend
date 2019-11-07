@@ -7,7 +7,8 @@
     - [/src/database/index.js (o loader dos models)](#srcdatabaseindexjs-o-loader-dos-models)
     - [Create Table](#create-table)
     - [Migrate](#migrate)
-  - [Seeds - Lib pra popular base com dados fictícios](#seeds---lib-pra-popular-base-com-dados-fictícios)
+  - [Sequelize Seeds](#sequelize-seeds)
+    - [Criar um user admin com o seeds](#criar-um-user-admin-com-o-seeds)
   - [Arquitetura MVC (Model, View, Controller)](#arquitetura-mvc-model-view-controller)
   - [Controllers](#controllers)
   - [Models](#models)
@@ -155,8 +156,7 @@ export default new Database();
 
 Aqui iniciei uma migration, e dei um nome à migration. Esta migration gera um
 arquivo "em branco" em /src/database/migrations/. Este arquivo pode ser uma
-criação de tabela, mas creio q possa ser tb outros comandos no banco (ainda não
-sei).
+criação de tabela, ou algum outro descrito ali acima.
 
 Migration gerada:
 
@@ -195,6 +195,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
     });
   },
 
@@ -210,9 +218,49 @@ Após finalizar a criação de uma migration, temos q migrar para q execute o SQ
 
 `yarn sequelize db:migrate`
 
-## Seeds - Lib pra popular base com dados fictícios
+## Sequelize Seeds
 
-Lib q popula dados fictícios pra vc testar.
+O sequelize possui uma lib de seeds para banco. A lib cria dados fictícios no
+banco pra facilitar o desenvolvimento.
+
+### Criar um user admin com o seeds
+
+Essa funcionalidade serve para criarmos registros na base de dados de forma
+automatizada.
+
+Um jeito muito massa de ter um user admin num sistema é criando um user admin
+pelo próprio seeds. O q vai salvar no banco é o hash, mas a senha vai estar
+dentro do código! Confere ae:
+
+`yarn sequelize seed:generate --name admin-user`
+
+/src/database/seeds/20191105182020-admin-user.js:
+
+```javascript
+const bcrypt = require('bcryptjs');
+
+module.exports = {
+  up: QueryInterface => {
+    return QueryInterface.bulkInsert(
+      'users',
+      [
+        {
+          name: 'Administrador',
+          email: 'foo@bar.com',
+          password_hash: bcrypt.hashSync('123456', 8),
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+      ],
+      {}
+    );
+  },
+
+  down: () => {},
+};
+```
+
+`yarn sequelize db:seed:all`
 
 ## Arquitetura MVC (Model, View, Controller)
 
