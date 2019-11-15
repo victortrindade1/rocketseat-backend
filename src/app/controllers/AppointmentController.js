@@ -60,7 +60,7 @@ class AppointmentController {
       provider_id,
       date,
     });
-
+    console.log('teste');
     return res.json(appointment);
   }
 }

@@ -5,6 +5,7 @@
   - [src/app/controllers/AppointmentController.js](#srcappcontrollersappointmentcontrollerjs)
 - [Validações de Agendamento](#validações-de-agendamento)
   - [src/app/controllers/AppointmentController.js](#srcappcontrollersappointmentcontrollerjs-1)
+- [Listando agendamentos do usuário](#listando-agendamentos-do-usuário)
 
 <!-- /TOC -->
 
@@ -148,3 +149,5 @@ class AppointmentController {
 
 export default new AppointmentController();
 ```
+
+# Listando agendamentos do usuário
