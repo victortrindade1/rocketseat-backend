@@ -1,0 +1,76 @@
+<!-- TOC -->
+
+- [Agendamento de serviço](#agendamento-de-serviço)
+  - [src/routes.js](#srcroutesjs)
+  - [src/app/controllers/AppointmentController.js](#srcappcontrollersappointmentcontrollerjs)
+- [Validações de Agendamento](#validações-de-agendamento)
+
+<!-- /TOC -->
+
+# Agendamento de serviço
+
+## src/routes.js
+
+```diff
+import ProviderController from './app/controllers/ProviderController';
++ import AppointmentController from './app/controllers/AppointmentController';
+
+import authMiddleware from './app/middlewares/auth';
+
+...
+
+routes.get('/providers', ProviderController.index);
+
++ routes.post('/appointments', AppointmentController.store);
+
+routes.post('/files', upload.single('file'), FileController.store);
+```
+
+## src/app/controllers/AppointmentController.js
+
+```javascript
+import * as Yup from 'yup';
+import User from '../models/User';
+import Appointment from '../models/Appointment';
+
+class AppointmentController {
+  async store(req, res) {
+    const schema = Yup.object().shape({
+      provider_id: Yup.number().required(),
+      date: Yup.date().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation fails' });
+    }
+
+    const { provider_id, date } = req.body;
+
+    // Check if provider_id is a provider
+    const isProvider = await User.findOne({
+      where: { id: provider_id, provider: true },
+    });
+
+    if (!isProvider) {
+      return res
+        .status(401)
+        .json({ error: 'You can only create appointments with providers' });
+    }
+
+    const appointment = await Appointment.create({
+      user_id: req.userId, // userId vem do middleware auth no momento que loga
+      provider_id,
+      date,
+    });
+    return res.json(appointment);
+  }
+}
+
+export default new AppointmentController();
+```
+
+# Validações de Agendamento
+
+Para o Node lidar com datas, instale a lib `date-fns`
+
+`yarn add date-fns@next`

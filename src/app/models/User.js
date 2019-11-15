@@ -11,9 +11,6 @@ class User extends Model {
         password_hash: Sequelize.STRING,
         provider: Sequelize.BOOLEAN,
       },
-      // Necessário passar um objeto com o sequelize como segundo parâmetro. Tb
-      // existem muitos outros métodos que podem passar junto com o sequelize.
-      // Para vê-los, use a intellisense do vscode, clicando em Ctrl + <espaço>
       {
         sequelize,
       }
@@ -27,6 +24,10 @@ class User extends Model {
     });
 
     return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
   }
 
   checkPassword(password) {
