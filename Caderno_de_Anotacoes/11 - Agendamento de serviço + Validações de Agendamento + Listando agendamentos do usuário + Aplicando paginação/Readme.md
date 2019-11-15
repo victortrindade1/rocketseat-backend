@@ -6,6 +6,10 @@
 - [Validações de Agendamento](#validações-de-agendamento)
   - [src/app/controllers/AppointmentController.js](#srcappcontrollersappointmentcontrollerjs-1)
 - [Listando agendamentos do usuário](#listando-agendamentos-do-usuário)
+  - [src/routes.js](#srcroutesjs-1)
+  - [src/app/controllers/AppointmentController.js](#srcappcontrollersappointmentcontrollerjs-2)
+- [Aplicando paginação](#aplicando-paginação)
+  - [src/app/controllers/AppointmentController.js](#srcappcontrollersappointmentcontrollerjs-3)
 
 <!-- /TOC -->
 
@@ -151,3 +155,71 @@ export default new AppointmentController();
 ```
 
 # Listando agendamentos do usuário
+
+## src/routes.js
+
+```diff
+routes.post('/appointments', AppointmentController.store);
+
++ routes.get('/appointments', AppointmentController.index);
+
+routes.post('/files', upload.single('file'), FileController.store);
+```
+
+## src/app/controllers/AppointmentController.js
+
+```diff
+import Appointment from '../models/Appointment';
++ import File from '../models/File';
+
+class AppointmentController {
++  async index(req, res) {
++    const appointments = await Appointment.findAll({
++      where: { user_id: req.userId, canceled_at: null },
++      order: ['date'],
++      attributes: ['id', 'date'],
++      include: [
++        {
++          model: User,
++          as: 'provider',
++          attributes: ['id', 'name'],
++          include: [
++            {
++              model: File,
++              as: 'avatar',
++              // Se não colocar id como atributo, a url tb não aparece
++              // Se não colocar path, aparece undefined, pq path é variável da url lá no model File
++              attributes: ['id', 'path', 'url'],
++            },
++          ],
++        },
++      ],
++    });
++
++    return res.json(appointments);
++  }
+
+  async store(req, res) {
+    const schema = Yup.object().shape({
+```
+
+# Aplicando paginação
+
+## src/app/controllers/AppointmentController.js
+
+```diff
+class AppointmentController {
+  async index(req, res) {
++    const { page = 1 } = req.query; // default = página 1
+
+    const appointments = await Appointment.findAll({
+      where: { user_id: req.userId, canceled_at: null },
+      order: ['date'],
+      attributes: ['id', 'date'],
++      limit: 20, // mostra até 20 agendamentos por página
++      offset: (page - 1) * 20,
+      include: [
+        {
+          model: User,
+          as: 'provider',
+```
