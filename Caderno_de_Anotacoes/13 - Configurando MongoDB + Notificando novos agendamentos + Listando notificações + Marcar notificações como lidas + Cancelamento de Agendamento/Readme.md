@@ -275,33 +275,33 @@ O usuário poderá cancelar seu agendamento até 2 horas antes do horário marca
 
 ## src/app/controllers/AppointmentController.js
 
-```javascript
-async delete(req, res) {
-    const appointment = await Appointment.findByPk(req.params.id);
-
-    if (appointment.user_id !== req.userId) {
-      return res.status(401).json({
-        error: "You don't have permission to cancel this appointment.",
-      });
-    }
-
-    const dateWithSub = subHours(appointment.date, 2); // O campo de data já vem em formato de data. Não precisa de um parseIso pq não é uma string
-
-    // 13:00
-    // dateWithSub: 11h
-    // now: 11:25h
-    // res: horário já passou
-
-    if (isBefore(dateWithSub, new Date())) {
-      return res.status(401).json({
-        error: 'You can only cancel appointments 2 hours in advance.',
-      });
-    }
-
-    appointment.canceled_at = new Date();
-
-    await appointment.save();
-
-    return res.json(appointment);
-  }
+```diff
++ async delete(req, res) {
++    const appointment = await Appointment.findByPk(req.params.id);
++
++    if (appointment.user_id !== req.userId) {
++      return res.status(401).json({
++        error: "You don't have permission to cancel this appointment.",
++      });
++    }
++
++    const dateWithSub = subHours(appointment.date, 2); // O campo de data já vem em formato de data. Não precisa de um parseIso pq não é uma string
++
++    // 13:00
++    // dateWithSub: 11h
++    // now: 11:25h
++    // res: horário já passou
++
++    if (isBefore(dateWithSub, new Date())) {
++      return res.status(401).json({
++        error: 'You can only cancel appointments 2 hours in advance.',
++      });
++    }
++
++    appointment.canceled_at = new Date();
++
++    await appointment.save();
++
++    return res.json(appointment);
++  }
 ```
