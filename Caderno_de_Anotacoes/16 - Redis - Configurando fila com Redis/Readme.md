@@ -48,6 +48,8 @@ Queue.processQueue();
 Cada trabalho em background tem de ter uma fila própria, escalonada na
 `const jobs`.
 
+No projeto, foi adicionada a fila CancellationMail.
+
 ```javascript
 import Bee from 'bee-queue';
 import CancellationMail from '../app/jobs/CancellationMail';
