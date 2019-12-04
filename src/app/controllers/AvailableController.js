@@ -1,29 +1,3 @@
-<!-- TOC -->
-
-- [Listando horários disponíveis](#listando-horários-disponíveis)
-  - [src/routes.js](#srcroutesjs)
-  - [src/app/controllers/AvailableController.js](#srcappcontrollersavailablecontrollerjs)
-
-<!-- /TOC -->
-
-# Listando horários disponíveis
-
-Uma API para listar todos os horários disponíveis do prestador de serviço no dia
-escolhido. O projeto não chegará a gravar horários editáveis do prestador, e sim
-procurará algo tipo 08:00 até 18:00, e verifica se horário já passou ou
-se está vago.
-
-## src/routes.js
-
-```diff
-+ import AvailableController from './app/controllers/AvailableController';
-
-+ routes.get('/providers/:providerId/available', AvailableController.index);
-```
-
-## src/app/controllers/AvailableController.js
-
-```javascript
 import {
   startOfDay,
   endOfDay,
@@ -91,4 +65,3 @@ class AvailableController {
 }
 
 export default new AvailableController();
-```
