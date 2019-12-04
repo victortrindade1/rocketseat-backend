@@ -1,3 +1,20 @@
+<!-- TOC -->
+
+- [Configurando fila com Redis](#configurando-fila-com-redis)
+  - [Redis pelo Docker](#redis-pelo-docker)
+  - [src/config/redis.js](#srcconfigredisjs)
+  - [Bee Queue](#bee-queue)
+    - [src/queue.js](#srcqueuejs)
+    - [src/lib/Queue.js](#srclibqueuejs)
+    - [package.json](#packagejson)
+  - [src/app/jobs/](#srcappjobs)
+    - [src/app/jobs/CancellationMail.js](#srcappjobscancellationmailjs)
+  - [src/app/controllers/AppointmentController.js](#srcappcontrollersappointmentcontrollerjs)
+- [Monitorando falhas nas filas](#monitorando-falhas-nas-filas)
+  - [src/lib/Queue.js](#srclibqueuejs-1)
+
+<!-- /TOC -->
+
 # Configurando fila com Redis
 
 Nós usaremos agora um novo tipo de banco de dados, o Redis. O Redis é um banco

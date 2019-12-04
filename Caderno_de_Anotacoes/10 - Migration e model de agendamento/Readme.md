@@ -1,3 +1,11 @@
+<!-- TOC -->
+
+- [src/database/migrations/20191114215251-create-appointments.js](#srcdatabasemigrations20191114215251-create-appointmentsjs)
+- [src/app/models/Appointment.js](#srcappmodelsappointmentjs)
+- [src/database/index.js](#srcdatabaseindexjs)
+
+<!-- /TOC -->
+
 Cria tabela Appointments. Possui 2 relações com a tabelas users
 (user_id, provider_id), pois tanto o usuário quanto o funcionário poderão
 agendar.

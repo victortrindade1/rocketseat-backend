@@ -1,3 +1,12 @@
+<!-- TOC -->
+
+- [Validação de Entrada](#validação-de-entrada)
+  - [Yup](#yup)
+    - [Exemplo 1 - UserController](#exemplo-1---usercontroller)
+    - [Exemplo 2 - SessionController](#exemplo-2---sessioncontroller)
+
+<!-- /TOC -->
+
 # Validação de Entrada
 
 Para fazer validação de entrada no backend, vamos tetificar usando uma lib

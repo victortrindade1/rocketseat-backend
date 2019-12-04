@@ -1,3 +1,14 @@
+<!-- TOC -->
+
+- [Configurando o template de e-mail (HTML com Node)](#configurando-o-template-de-e-mail-html-com-node)
+  - [src/lib/Mail.js](#srclibmailjs)
+  - [src/app/views/emails/layouts/default.hbs](#srcappviewsemailslayoutsdefaulthbs)
+  - [src/app/views/emails/partials/footer.hbs](#srcappviewsemailspartialsfooterhbs)
+  - [src/app/views/emails/cancellation.hbs](#srcappviewsemailscancellationhbs)
+  - [src/app/controllers/AppointmentController.js](#srcappcontrollersappointmentcontrollerjs)
+
+<!-- /TOC -->
+
 # Configurando o template de e-mail (HTML com Node)
 
 Aqui vc vai ver como criar views html no backend. No front é mole, tem o React,

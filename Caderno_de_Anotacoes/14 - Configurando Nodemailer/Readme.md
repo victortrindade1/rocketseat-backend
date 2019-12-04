@@ -1,3 +1,12 @@
+<!-- TOC -->
+
+- [Configurando Nodemailer](#configurando-nodemailer)
+  - [src/config/mail.js](#srcconfigmailjs)
+  - [src/lib/Mail.js](#srclibmailjs)
+  - [src/app/controllers/AppointmentController.js](#srcappcontrollersappointmentcontrollerjs)
+
+<!-- /TOC -->
+
 # Configurando Nodemailer
 
 No momento que um usuário cancela um agendamento, o sistema dispara um email pro
