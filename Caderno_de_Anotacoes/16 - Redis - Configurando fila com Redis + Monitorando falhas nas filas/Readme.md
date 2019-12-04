@@ -214,3 +214,41 @@ class AppointmentController {
 
 export default new AppointmentController();
 ```
+
+# Monitorando falhas nas filas
+
+O Bee Queue possui uma série de eventos prontos que podemos manipular, como:
+
+- queue.on('ready', () => {});
+- queue.on('error', () => {});
+- queue.on('succeeded', () => {});
+- queue.on('retrying', () => {});
+- queue.on('failed', () => {});
+- queue.on('stalled', () => {});
+
+Se der errado o `Mail.sendMail`, vamos fazer um tratamento de erro usando o
+evento `queue.on('failed', () => {});`.
+
+## src/lib/Queue.js
+
+```diff
+  add(queue, job) {
+    return this.queues[queue].bee.createJob(job).save();
+  }
+
+  processQueue() {
+    jobs.forEach(job => {
+      const { bee, handle } = this.queues[job.key];
+
+-      bee.process(handle);
++      bee.on('failed', this.handleFailure).process(handle);
+    });
+  }
+
++  handleFailure(job, err) {
++    console.log(`Queue ${job.queue.name}: FAILED`, err);
++  }
+}
+
+export default new Queue();
+```

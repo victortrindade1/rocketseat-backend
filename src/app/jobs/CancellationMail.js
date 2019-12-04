@@ -11,8 +11,6 @@ class CancellationMail {
   async handle({ data }) {
     const { appointment } = data; // const { appointment, foobar } = data;
 
-    console.log('A fila executou');
-
     await Mail.sendMail({
       to: `${appointment.provider.name} <${appointment.provider.email}>`,
       subject: 'Agendamento cancelado',
@@ -29,6 +27,8 @@ class CancellationMail {
         ),
       },
     });
+
+    // console.log('Queue executed');
   }
 }
 
