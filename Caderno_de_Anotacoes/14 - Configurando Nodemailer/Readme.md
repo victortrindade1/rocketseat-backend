@@ -29,6 +29,8 @@ estão:
 Para desenvolvimento, vc pode usar um gratuito, chamado `Mailtrap`. Este serve
 APENAS para desenvolvimento. Não serve para produção.
 
+Acesse: `mailtrap.io`
+
 ```javascript
 export default {
   host: 'smtp.mailtrap.io',
