@@ -107,9 +107,9 @@ import './database';
 
 ## Exception Handler
 
-Se ocorrer um erro, a request não pára derodar até que o usuário cancele. Vou
+Se ocorrer um erro, a request não pára de rodar até que o usuário cancele. Vou
 fazer um tratamento para que não fique uma request eterna, e ainda entregar o
-erro para o usuário em formato JSON.
+erro para o usuário em formato JSON (ou HTML, se preferir).
 
 Para tratar os erros e enviar via JSON, vou usar a lib `youch`.
 
@@ -120,6 +120,8 @@ Para tratar os erros e enviar via JSON, vou usar a lib `youch`.
 ### src/app.js
 
 ```diff
++ import Youch from 'youch';
+
 class App {
   constructor() {
     this.server = express();
