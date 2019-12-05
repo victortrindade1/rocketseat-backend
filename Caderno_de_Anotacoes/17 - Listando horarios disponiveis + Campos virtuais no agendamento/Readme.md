@@ -3,6 +3,9 @@
 - [Listando horários disponíveis](#listando-horários-disponíveis)
   - [src/routes.js](#srcroutesjs)
   - [src/app/controllers/AvailableController.js](#srcappcontrollersavailablecontrollerjs)
+- [Campos virtuais no agendamento](#campos-virtuais-no-agendamento)
+  - [src/app/models/Appointment.js](#srcappmodelsappointmentjs)
+  - [src/app/controllers/AppointmentController.js](#srcappcontrollersappointmentcontrollerjs)
 
 <!-- /TOC -->
 
@@ -91,4 +94,60 @@ class AvailableController {
 }
 
 export default new AvailableController();
+```
+
+# Campos virtuais no agendamento
+
+Vou colocar no model Appointment os campos `past` e `cancelable`. O past vai
+retornar se o agendamento é no passado. Cancelable vai retornar se é cancelável
+ou não (se for nas últimas 2 horas não é cancelável).
+
+## src/app/models/Appointment.js
+
+```diff
+import Sequelize, { Model } from 'sequelize';
++ import { isBefore, subHours } from 'date-fns';
+
+class Appointment extends Model {
+  static init(sequelize) {
+    super.init(
+      {
+        date: Sequelize.DATE,
+        canceled_at: Sequelize.DATE,
++        past: {
++          type: Sequelize.VIRTUAL,
++          get() {
++            return isBefore(this.date, new Date());
++          },
++        },
++        cancelable: {
++          type: Sequelize.VIRTUAL,
++          get() {
++            return isBefore(new Date(), subHours(this.date, 2));
++          },
++        },
+      },
+      {
+        sequelize,
+      }
+    );
+
+    return this;
+  }
+```
+
+## src/app/controllers/AppointmentController.js
+
+```diff
+class AppointmentController {
+  async index(req, res) {
+    const { page = 1 } = req.query; // default = página 1
+
+    const appointments = await Appointment.findAll({
+      where: { user_id: req.userId, canceled_at: null },
+      order: ['date'],
+-      attributes: ['id', 'date'],
++      attributes: ['id', 'date', 'past', 'cancelable'],
+      limit: 20, // mostra até 20 agendamentos por página
+      offset: (page - 1) * 20,
 ```
