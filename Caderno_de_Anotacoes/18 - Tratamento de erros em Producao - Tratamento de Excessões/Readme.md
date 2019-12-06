@@ -32,6 +32,9 @@ criar uma nova issue automática no github.
 
 `yarn add @sentry/node@5.10.0` (peguei na documentação essa versão)
 
+Para usar o Sentry enquanto o app está em produção, basta acessar a plataforma
+`https://sentry.io`.
+
 ### src/app.js
 
 A configuração a seguir tb está descrita na documentação. É simples de seguir.
