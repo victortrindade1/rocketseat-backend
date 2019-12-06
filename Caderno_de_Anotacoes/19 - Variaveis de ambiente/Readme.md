@@ -13,6 +13,7 @@
     - [src/config/redis.js](#srcconfigredisjs)
     - [src/config/mail.js](#srcconfigmailjs)
     - [src/config/sentry.js](#srcconfigsentryjs)
+  - [.env.example](#envexample)
 
 <!-- /TOC -->
 
@@ -244,4 +245,47 @@ export default {
 -  dsn: 'https://a1d21d5b328a403d95f04f593586d03c@sentry.io/1847047',
 +  dsn: process.env.SENTRY_DSN,
 };
+```
+
+## .env.example
+
+Uma boa prática é criar um arquivo `.env.example` no root, e retirar todas as
+informações sensíveis e deixar apenas as padrões. Dessa forma, outro
+desenvolvedor que pegar o projeto, criará um arquivo `.env` e preencherá apenas
+as informações sensíveis.
+
+```
+APP_URL=http://localhost:3333
+NODE_ENV=development
+
+# Auth
+
+APP_SECRET=eb8f7b80ca95741e6d69c8905a64fa7e
+
+# Database
+
+DB_HOST=
+DB_USER=
+DB_PASS=
+DB_NAME=
+
+# Mongo
+
+MONGO_URL=
+
+# Redis
+
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379
+
+# Mail
+
+MAIL_HOST=
+MAIL_PORT=
+MAIL_USER=
+MAIL_PASS=
+
+# Sentry
+
+SENTRY_DSN=
 ```
