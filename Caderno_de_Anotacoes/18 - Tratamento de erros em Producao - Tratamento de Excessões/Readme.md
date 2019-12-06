@@ -111,10 +111,13 @@ import './database';
 ## Exception Handler
 
 Se ocorrer um erro, a request não pára de rodar até que o usuário cancele. Vou
-fazer um tratamento para que não fique uma request eterna, e ainda entregar o
-erro para o usuário em formato JSON (ou HTML, se preferir).
+fazer um tratamento para que não fique uma request eterna. Neste tratamento, vou
+retornar o erro em formato JSON (ou HTML, se preferir) se estiver em ambiente de
+desenvolvimento. Se tiver em ambiente de produção, retorna uma msg a toa
+(possua o arquivo .env e instale a lib `dotenv`. Mais detalhes na pasta 19 do
+Caderno de Anotações).
 
-Para tratar os erros e enviar via JSON, vou usar a lib `youch`.
+Para passar o erro para JSON ou HTML, vou usar a lib `youch`.
 
 ### youch
 
@@ -145,9 +148,13 @@ class App {
 
 +  exceptionHandler() {
 +    this.server.use(async (err, req, res, next) => {
-+      const errors = await new Youch(err, req).toJSON();
++      if (process.env.NODE_ENV === 'development') {
++        const errors = await new Youch(err, req).toJSON();
 +
-+      return res.status(500).json(errors);
++        return res.status(500).json(errors);
++      }
++
++      return res.status(500).json({ error: 'Internal server error' });
 +    });
 +  }
 }
