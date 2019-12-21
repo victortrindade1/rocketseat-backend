@@ -25,6 +25,8 @@ routes.use(authMiddleware);
 
 // Posso definir authMiddleware de forma local:
 // routes.put('/users', authMiddleware, UserController.update);
+// Não precisa passar o id pois User possui hash, q lê o id lá no middleware
+// auth.js, logo o update fica mais prático neste caso
 routes.put('/users', UserController.update);
 
 routes.get('/providers', ProviderController.index);
