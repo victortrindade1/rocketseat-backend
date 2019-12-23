@@ -119,6 +119,9 @@ Caderno de Anotações).
 
 Para passar o erro para JSON ou HTML, vou usar a lib `youch`.
 
+> PS: função assíncrona (await) não funciona. Para funcionar, instale a lib
+> express-async-errors. Mais detalhes, veja acima
+
 ### youch
 
 `yarn add youch`
