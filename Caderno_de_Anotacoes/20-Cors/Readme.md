@@ -1,9 +1,36 @@
+# Cors
+
+Este tópico não foi tratado no backend do curso, apenas qnd chegamos na fase 5.
+
+O `cors` impede q outros apps acessem o seu backend, protegendo-o.
+
+`yarn add cors`
+
+Por enquanto, o cors vai ficar em branco, pois não hospedamos ainda a aplicação.
+Após sabermos, passamos desse jeito:
+
+```javascript
+import cors from 'cors';
+
+class App {
+  ...
+  middlewares() {
+    ...
+    this.server.use(cors({ origin: 'https://foobar.com.br' }));
+    ...
+  }
+}
+```
+
+## src/app.js
+
+```diff
 import 'dotenv/config';
 
 import express from 'express';
 import * as Sentry from '@sentry/node';
 import path from 'path';
-import cors from 'cors';
++ import cors from 'cors';
 import Youch from 'youch';
 import 'express-async-errors';
 
@@ -27,11 +54,7 @@ class App {
 
   middlewares() {
     this.server.use(Sentry.Handlers.requestHandler());
-    /**
-     * Em produção, o cors fica assim:
-     * this.server.use(cors({ origin: 'https://foobar.com.br' }));
-     */
-    this.server.use(cors());
++   this.server.use(cors());
     this.server.use(express.json());
     // Para o express aceitar acessar arquivos estáticos por url
     this.server.use(
@@ -60,3 +83,4 @@ class App {
 
 // Exporto apenas o server da classe, e não a classe toda, pois traz segurança
 export default new App().server;
+```
