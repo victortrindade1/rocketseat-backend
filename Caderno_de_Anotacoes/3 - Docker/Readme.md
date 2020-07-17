@@ -25,6 +25,10 @@ seguir o passo-a-passo do site.
 
 ## PostgreSQL do Docker
 
+> Vc não precisa sempre repetir esta operação. Uma vez q vc criou um Postgres na
+> máquina com Docker, vc pode usar a msm ferramenta pra criar vários diferentes
+> bancos internos de projetos diferentes no msm container do docker.
+
 Instale o container do postgres na sua máquina, porém, instale pelo docker, no
 comando abaixo:
 
