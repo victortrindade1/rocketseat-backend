@@ -5,6 +5,7 @@
     - [Usage](#usage)
   - [Migrations](#migrations)
     - [/src/database/index.js (o loader dos models)](#srcdatabaseindexjs-o-loader-dos-models)
+      - [src/app.js](#srcappjs)
     - [Create Table](#create-table)
     - [Migrate](#migrate)
   - [Sequelize Seeds](#sequelize-seeds)
@@ -150,6 +151,19 @@ class Database {
 }
 
 export default new Database();
+```
+
+#### src/app.js
+
+```diff
+import express from 'express';
+import routes from './routes';
+
++import './database';
+
+class App {
+  constructor() {
+    this.server = express();
 ```
 
 ### Create Table

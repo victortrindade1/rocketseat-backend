@@ -99,7 +99,7 @@ ele veio daqui de dentro, com uma chave única vinculada a este sistema.
 
 O JWT é dividido em 3 partes separadas por um ponto `.`:
 
-![jwt-image](/Caderno_de_Anotacoes/6-Gerar-hash_JWT/images/img1.png)
+![jwt-image](/Caderno_de_Anotacoes/6-Hash_com_bcrypt+Token_com_JWT/images/img1.png)
 
 - Headers
   - Mostram o tipo de token. O JWT possui muitos tipos, e aqui mostra o seu.
