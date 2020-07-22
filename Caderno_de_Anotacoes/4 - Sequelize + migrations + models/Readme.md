@@ -304,11 +304,11 @@ preenchimento automático, como "id", "created_at" e "updated_at".
 ### /src/app/models/User.js
 
 ```javascript
-import Sequelize, { Model } from 'sequelize'
+import Sequelize, { Model } from 'sequelize';
 
 class User extends Model {
   static init(sequelize) {
-    super this.init(
+    super.init(
       {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
@@ -321,11 +321,11 @@ class User extends Model {
       {
         sequelize,
       }
-    )
+    );
   }
 }
 
-export default User
+export default User;
 ```
 
 ## Configurando o Sequelize
