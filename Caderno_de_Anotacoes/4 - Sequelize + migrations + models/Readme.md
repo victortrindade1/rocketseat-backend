@@ -336,11 +336,15 @@ class User extends Model {
         sequelize,
       }
     );
+    return this;
   }
 }
 
 export default User;
 ```
+
+> Bug: se vc não colocar `return this` no método estático `init`, vai dar erro
+> se vc precisar associar tabelas. Então não esqueça do return this.
 
 ## Configurando o Sequelize
 
