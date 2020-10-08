@@ -60,7 +60,7 @@ MONGO_URL=mongodb://localhost:27017/gobarber
 # Redis
 
 REDIS_HOST=127.0.0.1
-REDIS_POST=6379
+REDIS_PORT=6379
 
 # Mail
 

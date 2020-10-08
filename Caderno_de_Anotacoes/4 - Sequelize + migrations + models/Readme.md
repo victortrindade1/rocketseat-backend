@@ -228,6 +228,9 @@ module.exports = {
 };
 ```
 
+> Sempre crie tabelas no plural e em minúsculo. O Sequelize converte mesmo se vc
+> não quiser.
+
 ### Migrate
 
 Após finalizar a criação de uma migration, temos q migrar para q execute o SQL.
