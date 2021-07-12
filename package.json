@@ -10,7 +10,9 @@
     "postgres": "docker start database",
     "mongodb": "docker start mongodatabase",
     "redis": "docker start redisbarber",
-    "dev-start": "docker start redisbarber && docker start mongodatabase && docker start database && nodemon src/queue.js && nodemon src/server.js"
+    "dev-start": "docker start redisbarber && docker start mongodatabase && docker start database && nodemon src/queue.js && nodemon src/server.js",
+    "build": "sucrase ./src -d ./dist --transforms imports",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "@sentry/node": "5.10.0",
