@@ -174,6 +174,9 @@ Aqui iniciei uma migration, e dei um nome à migration. Esta migration gera um
 arquivo "em branco" em /src/database/migrations/. Este arquivo pode ser uma
 criação de tabela, ou algum outro descrito ali acima.
 
+A migration por padrão vai pra raiz. Pra ir pra esta path acima, tem antes q 
+criar o .sequelizerc, q está mais abaixo descrito.
+
 Migration gerada:
 
 ```javascript
@@ -236,6 +239,9 @@ module.exports = {
 Após finalizar a criação de uma migration, temos q migrar para q execute o SQL.
 
 `yarn sequelize db:migrate`
+
+Atenção: só vai funcionar depois de criar o arquivo de configuração. É o último tópico desta anotação.
+
 
 ## Sequelize Seeds
 
@@ -381,6 +387,7 @@ module.exports = {
   username: 'postgres',
   password: 'docker',
   database: 'gobarber',
+  port: "5432", // Geralmente é essa a do docker, mas se tiver mais de 1 banco, tem q trocar a porta
   define: {
     timestamp: true,
     underscored: true,
